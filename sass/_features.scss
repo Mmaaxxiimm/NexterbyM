@@ -1,0 +1,38 @@
+.features {
+    grid-column: center-start / center-end;
+    
+    margin: 15rem 0;
+    
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr); We don't use this line, because our grid will not become 2by3 and than stack on top of each other. That's why we'll use the line below:
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    
+    //The line below is not necessary. It will happen anyway, even if we don't define anything, because an IMPLICIT grid will be created.
+    //grid-template-rows: auto auto;
+    grid-gap: 6rem;
+    //The line below is to make the gap between the heading and the text of an individual feature equal
+    align-items: start;
+}
+
+.feature {
+    
+    //Because of the line below, we have a grid (individual feature), inside a grid (feature section), inside a grid (the whole webpage)
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+    
+    &__icon {
+        //We use the 'fill' property to give a color to an SVG icon!
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        //The -1, to indicate the end of the grid, ONLY WORKS WITH AN EXPLICIT GRID! Here we're working with an implicit grid; we didn't define any rows!
+        grid-row: 1 / span 2;
+        transform: translateY(-1rem);
+    }
+    
+    &__text {
+        font-size: 1.7rem;
+    }
+}

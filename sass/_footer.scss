@@ -1,0 +1,49 @@
+.footer {
+    background-color: $color-secondary;
+    grid-column: full-start / full-end;
+    padding: 8rem;
+    
+}
+
+.nav {
+    //You set the list style for the element which contains all the links, but you set the text decoration on the li elements individually
+    list-style: none;
+    
+    display: grid;
+    //We use autofit(minmax) instead of 1fr to make the GRID already RESPONSIVE
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 2rem;
+    align-items: center;
+    
+    &__link:link,
+    &__link:visited {
+        font-size: 1.4rem;
+        color: #fff;
+        text-decoration: none;
+        font-family: $font-display;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 1.5rem;
+        display: block;
+        transition: all .2s;
+    }
+    
+    &__link:hover,
+    &__link:active {
+        background-color: rgba(#fff, .05);
+        transform: translateY(-3px);
+    }
+}
+
+.copyright {
+    font-size: 1.4rem;
+    color: $color-grey-light-2;
+    margin-top: 6rem;
+    text-align: center;
+    
+    //If we set a width, we also have to set margins:
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
