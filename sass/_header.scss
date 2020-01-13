@@ -8,10 +8,19 @@
     padding-top: 4rem;
     
     display: grid;
-    grid-template-rows: 1fr min-content 6rem 1fr;
-    grid-template-columns: max-content;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    //We changed the line below in order for the max-height of the image to work properly when the browserwindow gets smaller
+    grid-template-columns: minmax(min-content, max-content);
     grid-row-gap: 1.5rem;
     justify-content: center;
+    
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1;
+    }
+    
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
     
     &__logo {
         height: 3rem;
@@ -48,10 +57,13 @@
         grid-column-gap: 3rem;
         //Line below is to center the logo's inside their grid cell, horizontally
         justify-items: center;
+        align-items: center;
     }
     
     img {
-        height: 2.5rem;
+        //When using a max-height, you should also set a max-width, because if you don't, the image will not properly scale
+        max-height: 2.5rem;
+        max-width: 100%;
         filter: brightness(70%);
     }
 }
